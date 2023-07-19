@@ -1,5 +1,9 @@
 <?php
+session_start();
+if (isset($_POST["username"]) && isset($_POST["password"])){
+    unset($_SESSION["username"]);
 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
