@@ -1,10 +1,12 @@
 <?php
+require_once "pdo.php";
 include "header.php";
 ?>
 
-<title>Login Page</title>
-</head>
+    <title>Login Page</title>
+    </head>
 <body>
+<div><?php include "navbar.php" ?></div>
 <h1 class="text-center mt-5">Please login</h1>
 <div class="container mt-3">
     <form method="post" action="sign.php">
@@ -22,5 +24,6 @@ include "header.php";
         <button type="submit" class="btn btn-primary">Sign In</button>
     </form>
 </div>
-</body>
-</html>
+<?php
+include "footer.php";
+?>

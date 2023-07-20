@@ -2,9 +2,10 @@
 include "header.php";
 ?>
 
-<title>Registration Page</title>
-</head>
+    <title>Registration Page</title>
+    </head>
 <body>
+<div><?php include "navbar.php" ?></div>
 <h1 class="text-center mt-5">Register here!</h1>
 <div class="container mt-3">
     <form method="post" action="register.php">
@@ -26,5 +27,6 @@ include "header.php";
         <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
 </div>
-</body>
-</html>
+<?php
+include "footer.php";
+?>
