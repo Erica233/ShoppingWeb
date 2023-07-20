@@ -1,6 +1,20 @@
 <?php
 require_once "pdo.php";
 include "header.php";
+//TODO: login sys
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+    unset($_SESSION["username"]); //logout current user
+    if ($_POST["password"] == "123") {
+        $_SESSION["username"] = $_POST["username"];
+        $_SESSION["success"] = "Logged In Successfully!";
+        header("Location: index.php");
+        return;
+    } else {
+        $_SESSION["error"] = "Incorrect password!";
+        header("Location: login.php");
+        return;
+    }
+}
 ?>
 
     <title>Login Page</title>
@@ -8,8 +22,18 @@ include "header.php";
 <body>
 <div><?php include "navbar.php" ?></div>
 <h1 class="text-center mt-5">Please login</h1>
+<?php
+ if (isset($_SESSION["error"])) {
+     echo("<p style='color: red'>".$_SESSION["error"]."</p>");
+     unset($_SESSION["error"]); //flash
+ }
+ if (isset($_SESSION["success"])) {
+     echo("<p style='color: limegreen'>".$_SESSION["success"]."</p>");
+     unset($_SESSION["success"]);
+ }
+?>
 <div class="container mt-3">
-    <form method="post" action="sign.php">
+    <form method="post" action="login.php">
         <div class="mb-3">
             <label for="username" class="form-label">Username: </label>
             <input type="text" name="username" class="form-control" id="username">
