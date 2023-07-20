@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+//TODO: register sys
 ?>
 
     <title>Registration Page</title>
@@ -7,6 +8,10 @@ include "header.php";
 <body>
 <div><?php include "navbar.php" ?></div>
 <h1 class="text-center mt-5">Register here!</h1>
+<?php
+include "helper.php";
+flash();
+?>
 <div class="container mt-3">
     <form method="post" action="register.php">
         <div class="mb-3">

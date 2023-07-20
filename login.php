@@ -23,14 +23,8 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 <div><?php include "navbar.php" ?></div>
 <h1 class="text-center mt-5">Please login</h1>
 <?php
- if (isset($_SESSION["error"])) {
-     echo("<p style='color: red'>".$_SESSION["error"]."</p>");
-     unset($_SESSION["error"]); //flash
- }
- if (isset($_SESSION["success"])) {
-     echo("<p style='color: limegreen'>".$_SESSION["success"]."</p>");
-     unset($_SESSION["success"]);
- }
+include "helper.php";
+flash();
 ?>
 <div class="container mt-3">
     <form method="post" action="login.php">
