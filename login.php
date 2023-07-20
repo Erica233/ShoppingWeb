@@ -1,29 +1,26 @@
 <?php
-session_start();
-if (isset($_POST["username"]) && isset($_POST["password"])){
-    unset($_SESSION["username"]);
-
-}
+include "header.php";
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+<title>Login Page</title>
 </head>
 <body>
-<h1>Please login</h1>
-<form method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" value="" id="username">
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="" id="password">
-    </div>
-    <input type="submit" value="Sign In">
-</form>
-<footer>Do not have an account? <a href="register.php">Register here</a></footer>
+<h1 class="text-center mt-5">Please login</h1>
+<div class="container mt-3">
+    <form method="post" action="sign.php">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username: </label>
+            <input type="text" name="username" class="form-control" id="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password: </label>
+            <input type="password" name="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3">
+            Do not have an account? <a href="register.php">Register here</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+</div>
 </body>
 </html>

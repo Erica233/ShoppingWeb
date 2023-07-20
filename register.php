@@ -1,29 +1,30 @@
 <?php
+include "header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<title>Registration Page</title>
 </head>
 <body>
-    <form method="post">
-        <h1>Sign Up</h1>
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+<h1 class="text-center mt-5">Register here!</h1>
+<div class="container mt-3">
+    <form method="post" action="register.php">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username: </label>
+            <input type="text" name="username" class="form-control" id="username">
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
+        <div class="mb-3">
+            <label for="password" class="form-label">Password: </label>
+            <input type="password" name="password" class="form-control" id="password">
         </div>
-        <div>
-            <label for="password2">Password Again:</label>
-            <input type="password" name="password2" id="password2">
+        <div class="mb-3">
+            <label for="password2" class="form-label">Re-enter Password: </label>
+            <input type="password" name="password2" class="form-control" id="password2">
         </div>
-        <button type="submit">Register</button>
-        <footer>Already have an account? <a href="login.php">Login</a></footer>
+        <div class="mb-3">
+            Already have an account? <a href="login.php">Login here</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
+</div>
 </body>
 </html>
