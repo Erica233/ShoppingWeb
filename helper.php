@@ -10,4 +10,21 @@ function flash() {
     }
 }
 //funcName();
+
+function checkLogin() {
+    if (!isset($_SESSION["username"])) {
+        echo("<p>Please login first!</p>");
+        echo('<a href="register.php">Register</a><br>');
+        echo('<a href="login.php">Login</a>');
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+function echoTd($colName) {
+    echo(htmlentities($colName));
+    echo('</td><td>');
+}
 ?>

@@ -2,12 +2,24 @@
 require_once "pdo.php";
 include "header.php";
 include "navbar.php";
+include "helper.php";
+flash();
 ?>
 
 <title>Manage My Products</title>
 </head>
 
 <body>
+<?php
+flash();
+if (checkLogin()) { ?>
+
+<div class="container mx-auto">
+    <h1 class="text-center" style="margin-top: 20px">Manage My Products</h1>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add a new product
+    </button>
+</div>
 
 <!-- Modal for adding product details -->
 <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -32,8 +44,8 @@ include "navbar.php";
                     <input type="number" class="form-control" id="quantity" min="1" max="10000">
                 </div>
                 <div class="mb-3">
-                    <label for="type" class="form-label">Product Type</label>
-                    <select class="form-select" id="type" aria-label="Default select example">
+                    <label for="type" class="form-label">Product Category</label>
+                    <select class="form-select" id="category" aria-label="Default select example">
                         <option selected>Select Product Category</option>
                         <option value="Food">Food</option>
                         <option value="Clothes">Clothes</option>
@@ -55,54 +67,64 @@ include "navbar.php";
     </div>
 </div>
 
-<div class="container mx-auto">
-    <h1 class="text-center">Manage My Products</h1>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add a new product
-    </button>
+<script>
+    function addProductToSell() {
+        var name = $("#name").val();
+        var price = $("#price").val();
+        var quantity = $("#quantity").val();
+        var category = $("#category").val();
+        var description = $("#description").val();
+
+
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-striped" style="margin-top: 20px">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Operations</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+
+
+                $sql = $pdo->query('select * from sells');
+                while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+                    echo('<tr><td>');
+                    echoTd($row['id']);
+                    echoTd($row['name']);
+                    echoTd($row['price']);
+                    echoTd($row['quantity']);
+                    echoTd($row['category']);
+                    //echo('')
+
+                }
+
+                ?>
+                <tr>
+
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
 </div>
 
-<?php
-include "helper.php";
-flash();
-
-//check if logged in
-if (!isset($_SESSION["username"])) { ?>
-    <a href="register.php">Register</a><br>
-    <a href="login.php">Login</a>
-<?php } else { ?>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-        </tbody>
-    </table>
 
 
 <?php } ?>
-</body>
-</html>
+<?php
+include "footer.php";
+?>
