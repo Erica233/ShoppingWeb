@@ -25,7 +25,7 @@ if (checkLogin()) {
         </button>
     </div>
 
-    <!-- Modal for adding product details -->
+    <!-- AddProduct details in Modal -->
     <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -42,11 +42,13 @@ if (checkLogin()) {
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Sale Price</label>
-                            <input type="number" class="form-control" id="price" min="0.01" step=".01" name="price" required>
+                            <input type="number" class="form-control" id="price" min="0.01" step=".01" name="price"
+                                   required>
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Product Quantity</label>
-                            <input type="number" class="form-control" id="quantity" min="1" max="10000" name="quantity" required>
+                            <input type="number" class="form-control" id="quantity" min="1" max="10000" name="quantity"
+                                   required>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Product Category</label>
@@ -61,16 +63,15 @@ if (checkLogin()) {
                         <div class="mb-3">
                             <label for="description" class="form-label">Product Description</label>
                             <div class="input-group" id="description">
-                                <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
+                                <textarea class="form-control" aria-label="With textarea" name="description"
+                                          required></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <input type="hidden" name="csrfToken" value="<?= $csrfToken ?>">
-                        <button type="submit" class="btn btn-primary" name="addProduct" value="Add Product">Add
-                            Product
-                        </button>
+                        <button type="submit" class="btn btn-primary" name="addProduct" value="Add Product">Add Product</button>
                     </div>
                 </form>
             </div>
@@ -84,6 +85,7 @@ if (checkLogin()) {
                 <table class="table table-bordered table-striped" style="margin-top: 20px">
                     <thead>
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price</th>
                         <th scope="col">Stock</th>
@@ -96,14 +98,18 @@ if (checkLogin()) {
                     $sql = $pdo->query('select * from sells where username=' . $user);
                     while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                         echo('<tr><td>');
+                        echoTd($row['id']);
                         echoTd($row['name']);
                         echoTd($row['price']);
                         echoTd($row['quantity']);
                         echoTd($row['category']);
                         ?>
-                        <a href="" class="btn btn-outline-success">Edit</a>
+                        <?php include 'crudModal.php'; ?>
+                        <a href="#edit_<?= $row['id']; ?>" class="btn btn-outline-success" data-bs-toggle="modal">Edit</a>
                         <a href="" class="btn btn-outline-danger">Delete</a>
                         </td>
+
+                        </tr>
                         <?php
                     }
                     ?>

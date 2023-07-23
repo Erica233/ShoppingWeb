@@ -28,10 +28,9 @@ function echoTd($colName) {
 }
 
 function genCsrfToken() {
-    if (empty($_SESSION['csrfToken'])) {
+//    if (empty($_SESSION['csrfToken'])) {
         $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
-    }
-    $token = $_SESSION['csrfToken'];
-    return $token;
+//    }
+    return $_SESSION['csrfToken'];
 }
 ?>
