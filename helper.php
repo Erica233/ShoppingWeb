@@ -9,7 +9,6 @@ function flash() {
         unset($_SESSION["success"]);
     }
 }
-//funcName();
 
 function checkLogin() {
     if (!isset($_SESSION["username"])) {
@@ -23,9 +22,16 @@ function checkLogin() {
     }
 }
 
-
 function echoTd($colName) {
     echo(htmlentities($colName));
     echo('</td><td>');
+}
+
+function genCsrfToken() {
+    if (empty($_SESSION['csrfToken'])) {
+        $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
+    }
+    $token = $_SESSION['csrfToken'];
+    return $token;
 }
 ?>

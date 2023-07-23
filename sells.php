@@ -4,6 +4,7 @@ include "header.php";
 include "navbar.php";
 include "helper.php";
 flash();
+$csrfToken = genCsrfToken();
 ?>
 
     <title>Manage My Products</title>
@@ -66,6 +67,7 @@ if (checkLogin()) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="hidden" name="csrfToken" value="<?= $csrfToken ?>">
                         <button type="submit" class="btn btn-primary" name="addProduct" value="Add Product">Add
                             Product
                         </button>
@@ -75,6 +77,7 @@ if (checkLogin()) {
         </div>
     </div>
 
+    <!-- Table for showing my selling products -->
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -90,7 +93,7 @@ if (checkLogin()) {
                     </thead>
                     <tbody>
                     <?php
-                    $sql = $pdo->query('select * from sells where username=' . $user); //TODO: select products according to sellerId
+                    $sql = $pdo->query('select * from sells where username=' . $user);
                     while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                         echo('<tr><td>');
                         echoTd($row['name']);
