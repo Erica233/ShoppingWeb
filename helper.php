@@ -18,6 +18,7 @@ function checkLogin() {
         echo('<a href="login.php">Login</a>');
         return false;
     } else {
+        //echo($_SESSION["username"]);
         return true;
     }
 }
