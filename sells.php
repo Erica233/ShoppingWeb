@@ -38,21 +38,21 @@ if (checkLogin()) {
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Sale Price</label>
-                            <input type="number" class="form-control" id="price" min="0.01" step=".01" name="price">
+                            <input type="number" class="form-control" id="price" min="0.01" step=".01" name="price" required>
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Product Quantity</label>
-                            <input type="number" class="form-control" id="quantity" min="1" max="10000" name="quantity">
+                            <input type="number" class="form-control" id="quantity" min="1" max="10000" name="quantity" required>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Product Category</label>
                             <select class="form-select" id="category" aria-label="Default select example"
-                                    name="category">
-                                <option selected>Select Product Category</option>
+                                    name="category" required>
+                                <option value="" disabled selected>Select Product Category</option>
                                 <option value="Food">Food</option>
                                 <option value="Clothes">Clothes</option>
                                 <option value="Groceries">Groceries</option>
@@ -61,7 +61,7 @@ if (checkLogin()) {
                         <div class="mb-3">
                             <label for="description" class="form-label">Product Description</label>
                             <div class="input-group" id="description">
-                                <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+                                <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
                             </div>
                         </div>
                     </div>
