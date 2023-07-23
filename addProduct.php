@@ -26,16 +26,15 @@ if (isset($_POST['addProduct'])) {
 //                error_log("add: " . $_SESSION['csrfToken']);
             }
             catch(PDOException $e){
-                $_SESSION['message'] = $e->getMessage();
+                $_SESSION['error'] = 'Failed to add your product!';
             }
         } else {
             error_log("mismatch CSRF token!");
         }
     }
 } else {
-    error_log('enter else');
-    $_SESSION['error'] = 'Failed to add your product!';
-    $_SESSION['message'] = 'Fill up add form first';
+    error_log('user try to submit empty form.');
+    $_SESSION['error'] = 'Fill up details first!';
 }
 header('Location: sells.php');
 ?>
