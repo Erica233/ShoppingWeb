@@ -1,4 +1,5 @@
 <?php
+/* Shows flash messages */
 function flash() {
     if (isset($_SESSION["error"])) {
         echo("<p style='color: red'>".$_SESSION["error"]."</p>");
@@ -10,6 +11,7 @@ function flash() {
     }
 }
 
+/* Checks if the user is logged in */
 function checkLogin() {
     if (!isset($_SESSION["username"])) {
         echo("<p>Please login first!</p>");
@@ -27,10 +29,9 @@ function echoTd($colName) {
     echo('</td><td>');
 }
 
+/* Generates a CSRF token to protect from attacks */
 function genCsrfToken() {
-//    if (empty($_SESSION['csrfToken'])) {
-        $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
-//    }
+    $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
     return $_SESSION['csrfToken'];
 }
 ?>

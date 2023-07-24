@@ -12,6 +12,8 @@ include "header.php";
 include "helper.php";
 flash();
 ?>
+
+<!--Registration form -->
 <div class="container mt-3">
     <form method="post" action="register.php">
         <div class="mb-3">
@@ -32,6 +34,7 @@ flash();
         <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
 </div>
+
 <?php
 include "footer.php";
 ?>

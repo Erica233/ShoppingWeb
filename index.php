@@ -7,11 +7,11 @@ require_once "helper.php";
 <title>Welcome</title>
 </head>
 <body>
-<h1>Welcome</h1>
 
 <?php
 flash();
 if (checkLogin()) { ?>
+    <h2>Welcome, <?= $_SESSION['username']; ?>!</h2>
     <a href="market.php">Start Shopping</a><br>
     <a href="logout.php">Logout</a>
 <?php } ?>

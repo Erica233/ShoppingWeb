@@ -7,7 +7,7 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a new product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" action="addProduct.php">
+            <form method="post" action="manageProduct.php">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Product Name</label>
@@ -61,7 +61,7 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit your product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" action="editProduct.php?id=<?= $row['id']; ?>">
+            <form method="post" action="manageProduct.php?id=<?= $row['id']; ?>">
                 <div class="modal-body">
                     <div class="mb-3" hidden>
                         <label for="id" class="form-label">Product ID</label>
@@ -106,8 +106,6 @@
     </div>
 </div>
 
-
-
 <!-- Delete product details using Modal -->
 <div class="modal fade" id="delete_<?php echo $row['id']; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -117,7 +115,7 @@
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete your product</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" action="deleteProduct.php?id=<?= $row['id']; ?>">
+            <form method="post" action="manageProduct.php?id=<?= $row['id']; ?>">
                 <div class="modal-body">
                     <div class="mb-3" hidden>
                         <label for="id" class="form-label">Product ID</label>
