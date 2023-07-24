@@ -20,10 +20,7 @@ if (checkLogin()) {
     <!-- Table for showing my selling products -->
     <div class="container">
         <h2 class="text-center" style="margin-top: 20px">Manage My Products</h2>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add a new
-            product
-        </button>
+        <a class="btn btn-primary" href="addProduct.php">Add a new product</a>
         <div class="row">
             <div class="col-12">
                 <table class="table table-bordered table-striped" style="margin-top: 20px">
