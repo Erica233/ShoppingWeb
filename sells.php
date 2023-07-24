@@ -1,9 +1,9 @@
 <?php
 require_once "pdo.php";
+require_once "helper.php";
 include "header.php";
 include "navbar.php";
-include "helper.php";
-flash();
+
 $csrfToken = genCsrfToken();
 ?>
 
@@ -39,8 +39,10 @@ if (checkLogin()) {
                     </thead>
                     <tbody>
                     <?php
-                    $sql = $pdo->query("select * from sells where username='" . $user . "'");
-                    while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+                    $sql = "select * from sells where username=:username";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute(array(':username' => $user));
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo('<tr><td>');
                         echoTd($row['id']);
                         echoTd($row['name']);

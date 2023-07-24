@@ -1,9 +1,10 @@
 <?php
 /* Shows flash messages */
 function flash() {
+//    $_SESSION["error"] = 'lalala';
     if (isset($_SESSION["error"])) {
         echo("<p style='color: red'>".$_SESSION["error"]."</p>");
-        unset($_SESSION["error"]); //flash
+        unset($_SESSION["error"]);
     }
     if (isset($_SESSION["success"])) {
         echo("<p style='color: limegreen'>".$_SESSION["success"]."</p>");

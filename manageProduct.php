@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'pdo.php';
+require_once 'pdo.php';
 require_once 'helper.php';
 
 flash();

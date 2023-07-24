@@ -1,19 +1,31 @@
 <?php
 require_once "pdo.php";
+require_once "helper.php";
 include "header.php";
+include "navbar.php";
 
-//TODO: login sys
-if (isset($_POST["username"]) && isset($_POST["password"])) {
+$csrfToken = genCsrfToken();
+
+if (isset($_POST['login']) && isset($_POST["username"]) && isset($_POST["password"])) {
     unset($_SESSION["username"]); //logout current user
-    if ($_POST["password"] == "123") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+
+
+    //find user info from database
+    $sql = "select * from users where username=:username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':username' => $username));
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //check if username and password match
+    if (!$row || !password_verify($password, $row['password'])) {
+        $_SESSION['error'] = 'Incorrect username or password!';
+    } else {
         $_SESSION["username"] = $_POST["username"];
         $_SESSION["success"] = "Logged In Successfully!";
         header("Location: index.php");
-        return;
-    } else {
-        $_SESSION["error"] = "Incorrect password!";
-        header("Location: login.php");
-        return;
     }
 }
 ?>
@@ -21,10 +33,9 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     <title>Login Page</title>
     </head>
 <body>
-<div><?php include "navbar.php" ?></div>
 <h1 class="text-center mt-5">Please login</h1>
+
 <?php
-include "helper.php";
 flash();
 ?>
 
@@ -42,7 +53,7 @@ flash();
         <div class="mb-3">
             Do not have an account? <a href="register.php">Register here</a>
         </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
+        <button type="submit" class="btn btn-primary" name="login">Sign In</button>
     </form>
 </div>
 
