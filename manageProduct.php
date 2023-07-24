@@ -11,7 +11,7 @@ if (checkLogin()) {
 // Add product operations:
 if (isset($_POST['addProduct'])) {
     if (!empty($_POST['csrfToken']) && hash_equals($_SESSION['csrfToken'], $_POST['csrfToken'])) {
-        try{
+        try {
             $sql = "insert into sells (name, username, price, quantity, category, description) 
                             values (:name, :username, :price, :quantity, :category, :description)";
             $stmt = $pdo->prepare($sql);
@@ -25,7 +25,7 @@ if (isset($_POST['addProduct'])) {
             $_SESSION['success'] = 'Product added successfully!';
 //          error_log("add: " . $_SESSION['csrfToken']);
         }
-        catch(PDOException $e){
+        catch (PDOException $e) {
             $_SESSION['error'] = 'Failed to add your product!';
         }
     } else {
@@ -52,7 +52,7 @@ if (isset($_POST['editProduct'])) {
             $_SESSION['success'] = 'Product details were edited successfully!';
 //          error_log("edit: " . $_SESSION['csrfToken']);
         }
-        catch(PDOException $e){
+        catch (PDOException $e) {
             $_SESSION['error'] = 'Failed to update your product!';
             error_log($e->getMessage());
         }
@@ -73,7 +73,7 @@ if (isset($_POST['deleteProduct'])) {
             $_SESSION['success'] = 'Delete product successfully!';
 //          error_log("edit: " . $_SESSION['csrfToken']);
         }
-        catch(PDOException $e){
+        catch (PDOException $e) {
             $_SESSION['error'] = 'Failed to delete your product!';
             error_log($e->getMessage());
         }

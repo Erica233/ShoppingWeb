@@ -39,23 +39,28 @@ if (checkLogin()) {
                     </thead>
                     <tbody>
                     <?php
-                    $sql = "select * from sells where username=:username";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute(array(':username' => $user));
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo('<tr><td>');
-                        echoTd($row['id']);
-                        echoTd($row['name']);
-                        echoTd($row['price']);
-                        echoTd($row['quantity']);
-                        echoTd($row['category']);
-                        ?>
-                        <?php include 'crudModal.php'; ?>
-                        <a href="#edit_<?= $row['id']; ?>" class="btn btn-outline-success" data-bs-toggle="modal">Edit</a>
-                        <a href="#delete_<?= $row['id']; ?>" class="btn btn-outline-danger" data-bs-toggle="modal">Delete</a>
-                        </td>
-                        </tr>
-                        <?php
+                    try {
+                        $sql = "select * from sells where username=:username";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute(array(':username' => $user));
+                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            echo('<tr><td>');
+                            echoTd($row['id']);
+                            echoTd($row['name']);
+                            echoTd($row['price']);
+                            echoTd($row['quantity']);
+                            echoTd($row['category']);
+                            ?>
+                            <?php include 'crudModal.php'; ?>
+                            <a href="#edit_<?= $row['id']; ?>" class="btn btn-outline-success" data-bs-toggle="modal">Edit</a>
+                            <a href="#delete_<?= $row['id']; ?>" class="btn btn-outline-danger" data-bs-toggle="modal">Delete</a>
+                            </td>
+                            </tr>
+                            <?php
+                        }
+                    }
+                    catch (PDOException $e) {
+                        error_log($e->getMessage());
                     }
                     ?>
                     </tbody>

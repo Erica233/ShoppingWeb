@@ -11,22 +11,27 @@ if (isset($_POST['login']) && isset($_POST["username"]) && isset($_POST["passwor
     $password = $_POST["password"];
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    //find user info from database
-    $sql = "select * from users where username=:username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(':username' => $username));
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        //find user info from database
+        $sql = "select * from users where username=:username";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(':username' => $username));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //check if username and password match
-    if (!$row || !password_verify($password, $row['password'])) {
-        $_SESSION['error'] = 'Incorrect username or password!';
-        header("Location: login.php");
-        return;
-    } else {
-        $_SESSION["username"] = $_POST["username"];
-        $_SESSION["success"] = "Logged In Successfully!";
-        header("Location: index.php");
-        return;
+        //check if username and password match
+        if (!$row || !password_verify($password, $row['password'])) {
+            $_SESSION['error'] = 'Incorrect username or password!';
+            header("Location: login.php");
+            return;
+        } else {
+            $_SESSION["username"] = $_POST["username"];
+            $_SESSION["success"] = "Logged In Successfully!";
+            header("Location: index.php");
+            return;
+        }
+    }
+    catch (PDOException $e) {
+        error_log($e->getMessage());
     }
 }
 ?>

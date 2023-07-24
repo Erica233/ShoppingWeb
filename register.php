@@ -19,20 +19,30 @@ if (isset($_POST['register']) && isset($_POST["username"]) && isset($_POST["pass
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     //check if username is occupied or not
-    $sql = "select * from users where username=:username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(':username' => $username));
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($row) {
-        $_SESSION['error'] = 'Username is occupied!';
-        header("Location: register.php");
-        return;
+    try {
+        $sql = "select * from users where username=:username";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(':username' => $username));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            $_SESSION['error'] = 'Username is occupied!';
+            header("Location: register.php");
+            return;
+        }
+    }
+    catch (PDOException $e) {
+        error_log($e->getMessage());
     }
 
     //store new user's info
-    $sql2 = "insert into users (username, password) values (:username, :password)";
-    $stmt2 = $pdo->prepare($sql2);
-    $stmt2->execute(array(':username' => $username, ':password' => $hash));
+    try {
+        $sql2 = "insert into users (username, password) values (:username, :password)";
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->execute(array(':username' => $username, ':password' => $hash));
+    }
+    catch (PDOException $e) {
+        error_log($e->getMessage());
+    }
 
     $_SESSION["success"] = "Register Successfully!";
     header("Location: login.php");
