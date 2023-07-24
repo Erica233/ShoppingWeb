@@ -4,14 +4,12 @@ require_once "helper.php";
 include "header.php";
 include "navbar.php";
 
-$csrfToken = genCsrfToken();
-
+//checks if login info is correct, if correct, do login
 if (isset($_POST['login']) && isset($_POST["username"]) && isset($_POST["password"])) {
     unset($_SESSION["username"]); //logout current user
     $username = $_POST["username"];
     $password = $_POST["password"];
     $hash = password_hash($password, PASSWORD_DEFAULT);
-
 
     //find user info from database
     $sql = "select * from users where username=:username";
@@ -22,10 +20,13 @@ if (isset($_POST['login']) && isset($_POST["username"]) && isset($_POST["passwor
     //check if username and password match
     if (!$row || !password_verify($password, $row['password'])) {
         $_SESSION['error'] = 'Incorrect username or password!';
+        header("Location: login.php");
+        return;
     } else {
         $_SESSION["username"] = $_POST["username"];
         $_SESSION["success"] = "Logged In Successfully!";
         header("Location: index.php");
+        return;
     }
 }
 ?>
