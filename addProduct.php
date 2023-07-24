@@ -11,7 +11,6 @@ if (checkLogin()) {
 
 // Add product operations:
 if (isset($_POST['addProduct'])) {
-    error_log('send post');
     if (!empty($_POST['csrfToken']) && hash_equals($_SESSION['csrfToken'], $_POST['csrfToken'])) {
         try {
             $sql = "insert into sells (name, username, price, quantity, category, description) 
