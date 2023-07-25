@@ -40,12 +40,12 @@ if (isset($_POST['login']) && isset($_POST["username"]) && isset($_POST["passwor
 
 <?php
 include "navbar.php";
-flash();
 ?>
     <h1 class="text-center mt-5">Please login</h1>
 
     <!-- login form -->
     <div class="container mt-3">
+        <?php flash(); ?>
         <form method="post" action="login.php">
             <div class="mb-3">
                 <label for="username" class="form-label">Username: </label>

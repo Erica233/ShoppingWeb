@@ -52,13 +52,12 @@ if (isset($_POST['register']) && isset($_POST["username"]) && isset($_POST["pass
 
 <?php
 include "navbar.php";
-flash();
 ?>
-
     <h1 class="text-center mt-5">Register here!</h1>
 
     <!-- Registration form -->
     <div class="container mt-3">
+        <?php flash(); ?>
         <form method="post" action="register.php">
             <div class="mb-3">
                 <label for="username" class="form-label">Username: </label>

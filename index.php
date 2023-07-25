@@ -9,9 +9,10 @@ require_once "helper.php";
 
 <?php
 include "navbar.php";
-flash();
+
 if (checkLogin()) { ?>
     <h2>Welcome, <?= $_SESSION['username']; ?>!</h2>
+    <?php flash(); ?>
     <a href="market.php">Start Shopping</a><br>
     <a href="logout.php">Logout</a>
 <?php } ?>

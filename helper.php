@@ -2,13 +2,12 @@
 /* Shows flash messages */
 function flash()
 {
-//    $_SESSION["error"] = 'lalala';
     if (isset($_SESSION["error"])) {
-        echo("<p style='color: red'>" . $_SESSION["error"] . "</p>");
+        echo('<div class="alert alert-danger" role="alert">' . $_SESSION["error"] . '</div>');
         unset($_SESSION["error"]);
     }
     if (isset($_SESSION["success"])) {
-        echo("<p style='color: limegreen'>" . $_SESSION["success"] . "</p>");
+        echo('<div class="alert alert-success" role="alert">' . $_SESSION["success"] . '</div>');
         unset($_SESSION["success"]);
     }
 }

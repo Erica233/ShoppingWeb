@@ -12,7 +12,7 @@ $csrfToken = genCsrfToken();
 
 <?php
 include "navbar.php";
-flash();
+
 if (checkLogin()) {
     $user = $_SESSION["username"];
     ?>
@@ -20,6 +20,7 @@ if (checkLogin()) {
     <!-- Table for showing my selling products -->
     <div class="container">
         <h2 class="text-center" style="margin-top: 20px">Manage My Products</h2>
+        <?php flash(); ?>
         <a class="btn btn-primary" href="addProduct.php">Add a new product</a>
         <div class="row">
             <div class="col-12">
