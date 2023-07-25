@@ -1,14 +1,14 @@
 <?php
 include "header.php";
-include "navbar.php";
 require_once "helper.php";
 ?>
 
-<title>Welcome</title>
-</head>
-<body>
+    <title>Welcome</title>
+    </head>
+    <body>
 
 <?php
+include "navbar.php";
 flash();
 if (checkLogin()) { ?>
     <h2>Welcome, <?= $_SESSION['username']; ?>!</h2>

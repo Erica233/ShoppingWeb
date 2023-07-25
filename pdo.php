@@ -6,10 +6,10 @@ const DB_NAME = "ShoppingWebDB";
 
 /* Establishes the connection to Database */
 try {
-    $pdo = new PDO("mysql:host=".DB_HOST.";port=8889;dbname=".DB_NAME, DB_USER, DB_PASSWORD);
+    $pdo = new PDO("mysql:host=" . DB_HOST . ";port=8889;dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //    echo("Connected DB successfully");
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Failed to connect DB: " . $e->getMessage();
 }
 ?>

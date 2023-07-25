@@ -2,7 +2,6 @@
 require_once "pdo.php";
 require_once "helper.php";
 include "header.php";
-include "navbar.php";
 
 $csrfToken = genCsrfToken();
 ?>
@@ -12,6 +11,7 @@ $csrfToken = genCsrfToken();
     <body>
 
 <?php
+include "navbar.php";
 flash();
 if (checkLogin()) {
     $user = $_SESSION["username"];
@@ -55,8 +55,7 @@ if (checkLogin()) {
                             </tr>
                             <?php
                         }
-                    }
-                    catch (PDOException $e) {
+                    } catch (PDOException $e) {
                         error_log($e->getMessage());
                     }
                     ?>
