@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                     <input type="hidden" name="csrfToken" value="<?= $_SESSION['csrfToken'] ?>">
                     <button type="submit" class="btn btn-primary" name="editProduct" value="Edit Product">Edit Product
                     </button>
@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
                     <input type="hidden" name="csrfToken" value="<?= $_SESSION['csrfToken'] ?>">
                     <button type="submit" class="btn btn-danger" name="deleteProduct" value="Delete Product">Confirm
                     </button>

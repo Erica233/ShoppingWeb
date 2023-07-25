@@ -79,7 +79,7 @@ flash();
                 <textarea class="form-control" aria-label="With textarea" name="description" required></textarea>
             </div>
         </div>
-        <a class="btn btn-secondary" href="sells.php">Back</a>
+        <a class="btn btn-outline-secondary" href="sells.php">Back</a>
         <input type="hidden" name="csrfToken" value="<?= $_SESSION['csrfToken'] ?>">
         <button type="submit" class="btn btn-primary" name="addProduct" value="Add Product">Add Product</button>
     </form>
