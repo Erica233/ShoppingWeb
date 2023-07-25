@@ -50,8 +50,12 @@ flash();
     </div>
 
     <a type="button" class="btn btn-outline-secondary" href="market.php">Back</a>
-    <input type="hidden" name="csrfToken" value="<?= $csrfToken ?>">
-    <button type="submit" class="btn btn-outline-success" name="buy" value="Buy Now">Buy Now</button>
+
+    <input type="hidden" name="csrfToken" value="<?= $_SESSION['csrfToken'] ?>">
+    <?php include 'crudModal.php'; ?>
+    <a href="#buy_<?= $row['id']; ?>" class="btn btn-outline-success" data-bs-toggle="modal">Buy Now</a>
+<!--    <button type="submit" class="btn btn-outline-success" name="buy" value="Buy Now">Buy Now</button>-->
+
     <button type="submit" class="btn btn-outline-primary" name="addCart" value="Add to Cart">Add to Cart</button>
 </div>
 <?php

@@ -4,6 +4,7 @@ require_once "pdo.php";
 require_once "helper.php";
 include "navbar.php";
 
+
 flash();
 if (checkLogin()) {
     $user = $_SESSION["username"];
