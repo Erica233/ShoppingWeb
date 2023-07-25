@@ -1,7 +1,7 @@
 <?php
+include "header.php";
 require_once "pdo.php";
 require_once "helper.php";
-include "header.php";
 
 //checks if login info is correct, if correct, do login
 if (isset($_POST['login']) && isset($_POST["username"]) && isset($_POST["password"])) {

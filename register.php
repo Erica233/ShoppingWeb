@@ -1,7 +1,8 @@
 <?php
+include "header.php";
 require_once "pdo.php";
 require_once "helper.php";
-include "header.php";
+
 
 //checks if registration info is legit,
 //if username is not occupied, store this account info

@@ -1,7 +1,7 @@
 <?php
+include "header.php";
 require_once "pdo.php";
 require_once "helper.php";
-include "header.php";
 
 $csrfToken = genCsrfToken();
 ?>
