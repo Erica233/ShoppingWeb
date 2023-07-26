@@ -21,13 +21,15 @@ if (isset($_POST['buyProduct'])) {
                 ':quantity' => $leftStock));
 
             //create order entry
-            $sql = "insert into orders (buyer_name, product_id, quantity) 
-                    values (:buyer_name, :product_id, :quantity)";
+            $sql = "insert into orders (buyer_name, product_id, quantity, total_price) 
+                    values (:buyer_name, :product_id, :quantity, :total_price)";
             $stmt = $pdo->prepare($sql);
+            $totalPrice = $_POST['totalQuantity'] * $_POST['price'];
             $stmt->execute(array(
                 ':buyer_name' => $user,
                 ':product_id' => $_POST['id'],
-                ':quantity' => $_POST['totalQuantity']));
+                ':quantity' => $_POST['totalQuantity'],
+                ':total_price' => $totalPrice));
             $_SESSION['success'] = 'Bought Product successfully!';
         } catch (PDOException $e) {
             $_SESSION['error'] = 'Failed to buy product!';
