@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 26, 2023 at 12:57 AM
+-- Generation Time: Jul 27, 2023 at 12:17 PM
 -- Server version: 5.7.39
 -- PHP Version: 8.2.0
 
@@ -31,15 +31,19 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `buyer_name` varchar(20) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(10) NOT NULL
+  `quantity` int(10) UNSIGNED NOT NULL,
+  `total_price` decimal(10,2) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `buyer_name`, `product_id`, `quantity`) VALUES
-(10, '1', 1, 2);
+INSERT INTO `orders` (`id`, `buyer_name`, `product_id`, `quantity`, `total_price`) VALUES
+(13, 'a', 1, 1, '3.00'),
+(14, '1', 1, 2, '6.00'),
+(15, 'a', 7, 1, '1.50'),
+(16, 'a', 12, 2, '400.00');
 
 -- --------------------------------------------------------
 
@@ -62,12 +66,14 @@ CREATE TABLE `sells` (
 --
 
 INSERT INTO `sells` (`id`, `name`, `username`, `price`, `quantity`, `category`, `description`) VALUES
-(1, 'Apple', 'admin', '3.00', 87, 'Food', 'It\'s an apple.'),
-(7, 'Cola', '123', '1.50', 2000, 'Food', '1L'),
-(12, 'coat', '123', '200.00', 50, 'Clothes', 'black'),
-(13, 'Spoon', '123', '2.00', 300, 'Groceries', '2'),
+(1, 'Apple', 'admin', '3.00', 74, 'Food', 'It\'s an apple.'),
+(7, 'Cola', '123', '1.50', 1999, 'Food', '1L'),
+(12, 'coat', '123', '200.00', 48, 'Clothes', 'black'),
+(13, 'Spoon', '123', '2.00', 299, 'Groceries', '2'),
 (16, 'Water', '123', '2.00', 140, 'Food', 'mineral'),
-(30, 'D', '1', '1.00', 1, 'Food', 'd');
+(30, 'D', '1', '1.00', 1, 'Food', 'd'),
+(31, 'Cup', 'a', '3.00', 300, 'Groceries', '500ml'),
+(32, 'Toothpaste', 'a', '6.00', 300, 'Groceries', 'mint taste');
 
 -- --------------------------------------------------------
 
@@ -100,11 +106,7 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, 'admin', '$2y$10$K09yV80pyOhNwA4cZDxmcuOr79/q8qvegOeZR5Dos.zhkpbCZIQ.G'),
 (2, '123', '$2y$10$wk53rsGcb.7be8s/mTBZIuN5eRvYR1d1rskjwqgnhSc7VlVcUTW0u'),
 (5, '1', '$2y$10$vBPbW04ZOc.otkPv8A1Z8O/C4/pYdPYTM/m.sDCFWo8Wfvv5q1qeC'),
-(6, '2', '$2y$10$yKGBqMd5dP1ZXGZXXYrUruzkcD4b./6jPrSdZ2cNDz7xdc4ob7HaK'),
-(7, 'f1', '$2y$10$MfC9BfH4Ey04G6Up9bYFwuUGRyY/7rRtr0pwR1q6ov1gFCDrfwjOO'),
-(8, 'a', '$2y$10$MV/B20Gpd4q20mPUtx8.uuvGfwb7HYgIy.azPB.w2VNBc4.iwcdD2'),
-(9, 'm', '$2y$10$sgOGqCBmAfEDFzoWIiAUIOBidKsJ1u2vEKhNPGCSKu52KR9gZm0I6'),
-(10, 'k', '$2y$10$0MR0HwQf95RcFnavfZqqUOm38R9pGH6D0weAXYD6D14iPyuLYBzB.');
+(11, 'a', '$2y$10$sojf3mgFpM4f6rLSosspd.u9FSBh5bUeFM87SUmMPqG2W7./5g9XG');
 
 --
 -- Indexes for dumped tables
@@ -146,13 +148,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sells`
 --
 ALTER TABLE `sells`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `test`
@@ -164,7 +166,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

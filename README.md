@@ -8,6 +8,7 @@ This is a marketplace featured with the following functionalities:
 
 + Ability for an seller to create, read, update, and delete items/products within a marketplace
 + Ability for a user to look through and 'purchase' (without payment) marketplace items
++ User can check order history
 
 
 How to use:
