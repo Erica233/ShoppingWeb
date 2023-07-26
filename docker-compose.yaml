@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    container_name: db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ShoppingWebDB
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "9906:3306"
+  php-apache-environment:
+    container_name: myweb
+    image: php:8.2-apache
+    volumes:
+      - .:/var/www/html/
+    ports:
+      - 8000:80
+  myweb:
+    image: myweb
+    hostname: localhost
+    ports:
+      - '8080:80'
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+      - php-apache-environment
