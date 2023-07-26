@@ -19,7 +19,7 @@ if (checkLogin()) {
 
     <!-- Table for showing all products -->
     <div class="container">
-        <h2 class="text-center" style="margin-top: 20px">All Products</h2>
+        <h2 class="text-center" style="margin-top: 20px">Products</h2>
         <?php flash(); ?>
         <div class="row">
             <div class="col-12">
@@ -35,9 +35,15 @@ if (checkLogin()) {
                     <tbody>
                     <?php
                     try {
-                        $sql = "select * from sells";
-                        $stmt = $pdo->prepare($sql);
-                        $stmt->execute();
+                        if (isset($_GET['Category'])) {
+                            $sql = "select * from sells where category=:category";
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->execute(array(':category' => $_GET['Category']));
+                        } else {
+                            $sql = "select * from sells";
+                            $stmt = $pdo->prepare($sql);
+                            $stmt->execute();
+                        }
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo('<tr><td>');
                             echoTd($row['name']);
