@@ -148,22 +148,27 @@
                     <div class="mb-3" hidden>
                         <label for="id" class="form-label">Product ID</label>
                         <input type="text" class="form-control" id="id" name="id"
-                               value="<?= htmlentities($row['id']) ?>" required>
+                               value="<?= htmlentities($row['id']); ?>" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3" hidden>
                         <label for="name" class="form-label">Product Name</label>
                         <input type="text" class="form-control" id="name" name="name"
-                               value="<?= htmlentities($row['name']) ?>" required disabled>
+                               value="<?= htmlentities($row['name']); ?>" required>
+                    </div>
+                    <div class="mb-3" hidden>
+                        <label for="price" class="form-label">Unit Price</label>
+                        <input type="number" class="form-control" id="price" name="price" step=".01"
+                               value="<?php echo htmlentities($row['price']); error_log('in modal: ' . $row['price']); ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Unit Price</label>
-                        <input type="number" class="form-control" id="price" min="0.01" step=".01" name="price"
-                               value="<?= htmlentities($row['price']) ?>" required disabled>
+                        <input type="number" class="form-control" id="price" name="price" step=".01"
+                               value="<?php echo htmlentities($row['price']); error_log('in modal: ' . $row['price']); ?>" required disabled>
                     </div>
                     <div class="mb-3" hidden>
                         <label for="quantity" class="form-label">Stock</label>
                         <input type="number" class="form-control" id="quantity" name="quantity"
-                               value="<?= htmlentities($row['quantity']) ?>" required>
+                               value="<?= htmlentities($row['quantity']); ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="totalQuantity" class="form-label">Product Quantity</label>
@@ -181,7 +186,7 @@
                     <div class="mb-3">
                         <label for="totalPrice" class="form-label">Total Cost</label>
                         <input type="number" class="form-control" id="totalPrice" name="totalPrice" min="0.01" step=".01"
-                               value="<?= htmlentities($row['price']) ?>" required disabled>
+                               value="<?= htmlentities($row['price']); ?>" required disabled>
                     </div>
                 </div>
                 <div class="modal-footer">

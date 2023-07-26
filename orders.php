@@ -6,7 +6,7 @@ require_once "helper.php";
 //$csrfToken = genCsrfToken();
 ?>
 
-    <title>All Products</title>
+    <title>All Orders</title>
     </head>
     <body>
 
@@ -17,40 +17,38 @@ if (checkLogin()) {
     $user = $_SESSION["username"];
     ?>
 
-    <!-- Table for showing all products -->
+    <!-- Table for showing all orders -->
     <div class="container">
-        <h2 class="text-center" style="margin-top: 20px">Products</h2>
+        <h2 class="text-center" style="margin-top: 20px">Orders</h2>
         <?php flash(); ?>
         <div class="row">
             <div class="col-12">
                 <table class="table table-bordered table-striped" style="margin-top: 20px">
                     <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Operations</th>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Price</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
                     try {
-                        if (isset($_GET['Category'])) {
-                            $sql = "select * from sells where category=:category";
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->execute(array(':category' => $_GET['Category']));
-                        } else {
-                            $sql = "select * from sells";
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->execute();
-                        }
+                        $sql = "select orders.id as order_id, sells.name as product_name, orders.quantity as quantity, 
+                                        orders.total_price as total_price
+                                from orders join sells 
+                                on sells.id=orders.product_id 
+                                where buyer_name=:buyer_name";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute(array(':buyer_name' => $user));
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo('<tr><td>');
-                            echoTd($row['name']);
-                            echoTd($row['price']);
-                            echoTd($row['category']);
+                            echoTd($row['order_id']);
+                            echoTd($row['product_name']);
+                            echoTd($row['quantity']);
+                            echo(htmlentities($row['total_price']));
                             ?>
-                            <a href="detail.php?productId=<?= $row['id']; ?>" class="btn btn-outline-success">Details</a>
                             </td>
                             </tr>
                             <?php
