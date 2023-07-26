@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="orders.php">My Orders</a>
+                    <a class="nav-link" href="#">My Orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="sells.php">My Sells</a>
