@@ -37,7 +37,7 @@ flash();
         <label for="name">Name: </label> <?= htmlentities($row['name']); ?>
     </div>
     <div class="mb-3">
-        <label for="price" class="form-label">Sale Price</label> <?= htmlentities($row['price']); ?>
+        <label for="price" class="form-label">Sale Price: </label> <?= htmlentities($row['price']); ?>
     </div>
     <div class="mb-3">
         <label for="quantity" class="form-label">Quantity: </label> <?= htmlentities($row['quantity']); ?>
