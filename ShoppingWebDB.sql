@@ -7,9 +7,11 @@
 -- Server version: 5.7.39
 -- PHP Version: 8.2.0
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET
+SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET
+time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,23 +29,24 @@ SET time_zone = "+00:00";
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `buyer_name` varchar(20) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(10) UNSIGNED NOT NULL,
-  `total_price` decimal(10,2) UNSIGNED NOT NULL
+CREATE TABLE `orders`
+(
+    `id`          int(11) NOT NULL,
+    `buyer_name`  varchar(20) NOT NULL,
+    `product_id`  int(11) NOT NULL,
+    `quantity`    int(10) UNSIGNED NOT NULL,
+    `total_price` decimal(10, 2) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `buyer_name`, `product_id`, `quantity`, `total_price`) VALUES
-(13, 'a', 1, 1, '3.00'),
-(14, '1', 1, 2, '6.00'),
-(15, 'a', 7, 1, '1.50'),
-(16, 'a', 12, 2, '400.00');
+INSERT INTO `orders` (`id`, `buyer_name`, `product_id`, `quantity`, `total_price`)
+VALUES (13, 'a', 1, 1, '3.00'),
+       (14, '1', 1, 2, '6.00'),
+       (15, 'a', 7, 1, '1.50'),
+       (16, 'a', 12, 2, '400.00');
 
 -- --------------------------------------------------------
 
@@ -51,22 +54,23 @@ INSERT INTO `orders` (`id`, `buyer_name`, `product_id`, `quantity`, `total_price
 -- Table structure for table `sells`
 --
 
-CREATE TABLE `sells` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `price` decimal(10,2) UNSIGNED NOT NULL,
-  `quantity` int(10) UNSIGNED NOT NULL,
-  `category` enum('Food','Clothes','Groceries','') NOT NULL,
-  `description` text NOT NULL
+CREATE TABLE `sells`
+(
+    `id`          int(11) NOT NULL,
+    `name`        varchar(100) NOT NULL,
+    `username`    varchar(20)  NOT NULL,
+    `price`       decimal(10, 2) UNSIGNED NOT NULL,
+    `quantity`    int(10) UNSIGNED NOT NULL,
+    `category`    enum('Food','Clothes','Groceries','') NOT NULL,
+    `description` text         NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sells`
 --
 
-INSERT INTO `sells` (`id`, `name`, `username`, `price`, `quantity`, `category`, `description`) VALUES
-(1, 'Apple', 'admin', '3.00', 74, 'Food', 'It\'s an apple.'),
+INSERT INTO `sells` (`id`, `name`, `username`, `price`, `quantity`, `category`, `description`)
+VALUES (1, 'Apple', 'admin', '3.00', 74, 'Food', 'It\'s an apple.'),
 (7, 'Cola', '123', '1.50', 1999, 'Food', '1L'),
 (12, 'coat', '123', '200.00', 48, 'Clothes', 'black'),
 (13, 'Spoon', '123', '2.00', 299, 'Groceries', '2'),

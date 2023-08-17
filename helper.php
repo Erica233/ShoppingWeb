@@ -35,9 +35,11 @@ function echoTd($colName)
 /* Generates a CSRF token to protect from attacks */
 function genCsrfToken()
 {
-    $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
-//    error_log('gen csrf: ' . $_SESSION['csrfToken']);
-    return $_SESSION['csrfToken'];
+    if (!isset($_SESSION['csrfToken'])) {
+        $_SESSION['csrfToken'] = bin2hex(random_bytes(32));
+//      error_log('gen csrf: ' . $_SESSION['csrfToken']);
+        return $_SESSION['csrfToken'];
+    }
 }
-
+$csrfToken = genCsrfToken();
 ?>

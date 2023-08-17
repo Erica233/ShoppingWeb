@@ -50,7 +50,8 @@ if (checkLogin()) {
                             echoTd($row['price']);
                             echoTd($row['category']);
                             ?>
-                            <a href="detail.php?productId=<?= $row['id']; ?>" class="btn btn-outline-success">Details</a>
+                            <a href="detail.php?productId=<?= $row['id'] ?>"
+                               class="btn btn-outline-success">Details</a>
                             </td>
                             </tr>
                             <?php

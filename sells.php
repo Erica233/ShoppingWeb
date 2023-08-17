@@ -3,7 +3,7 @@ include "header.php";
 require_once "pdo.php";
 require_once "helper.php";
 
-$csrfToken = genCsrfToken();
+//$csrfToken = genCsrfToken();
 ?>
 
     <title>Manage My Products</title>
@@ -50,8 +50,8 @@ if (checkLogin()) {
                             echoTd($row['category']);
                             ?>
                             <?php include 'crudModal.php'; ?>
-                            <a href="#edit_<?= $row['id']; ?>" class="btn btn-outline-success" data-bs-toggle="modal">Edit</a>
-                            <a href="#delete_<?= $row['id']; ?>" class="btn btn-outline-danger" data-bs-toggle="modal">Delete</a>
+                            <a href="#edit_<?= $row['id'] ?>" class="btn btn-outline-success" data-bs-toggle="modal">Edit</a>
+                            <a href="#delete_<?= $row['id'] ?>" class="btn btn-outline-danger" data-bs-toggle="modal">Delete</a>
                             </td>
                             </tr>
                             <?php
